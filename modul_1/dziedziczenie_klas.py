@@ -16,7 +16,7 @@ student = Student('mirek', 'girek')
 print(student.hello())
 
 
-
+#
 #
 # person = Person("mirek", 'girek')
 # print(person.hello())
