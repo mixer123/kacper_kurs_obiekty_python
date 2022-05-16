@@ -7,7 +7,7 @@ def suma(a=2,b=2,*args):
 # print(suma(3,4,4,6,8))
 '''Zapisujemy do pliku jak standardowe wyjście, print pisze po pliku nie po ekranie'''
 original_stdout = sys.stdout
-file1 = open('file.txt', 'w')
+file1 = open('../modul4/file.txt', 'w')
 sys.stdout = file1
 print(file=file1)
 print('Hello, Python!')
