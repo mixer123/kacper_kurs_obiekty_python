@@ -1,0 +1,17 @@
+{
+  "click": {
+            "click button mouse": {
+             "button": "left"
+                                  }
+            },
+
+  "type": {
+
+      "key":"enter",
+      "text": "Kacper Sieradziński",
+      "x": "710",
+      "y": "537"
+
+    }
+
+}
