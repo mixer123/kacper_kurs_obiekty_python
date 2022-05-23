@@ -1,6 +1,7 @@
 import json
 import os, time
 from screeninfo import get_monitors
+from enum import Enum
 
 from pynput.keyboard import Key, Controller
 from pynput import  keyboard, mouse
@@ -32,16 +33,32 @@ class Controler:
 class Process:
     def __init__(self, filename, controler):
         self.filename = filename
-        self.steps = []
+        self.steps = {}
         self.controler = controler
     def load_steps(self):
         with open(self.filename) as file:
             self.steps = json.load(file)
     def start(self):
-        for step in self.steps:
-            print(step)
+         # print(self.steps.items())
 
+         for step in self.steps.keys():
+            if step == 'click':
 
+                os.chdir('/usr/bin/')
+                webbrowser.get('/usr/bin/firefox').open_new_tab('https://www.youtube.com/')
+                self.controler.position(int(get_monitors()[0].width*0.36), 136)
+                self.controler.click_button_mouse(Button.left, 1)
+                time.sleep(5)
+            if step ==  'type':
+                    key, text, x, y = self.steps['type'].values()
+                    self.controler.type(text)
+                    time.sleep(5)
+                    self.controler.click_button_keyboard(Key.enter)
+                    time.sleep(5)
+                    self.controler.position(int(x), int(y))
+                    time.sleep(5)
+                    self.controler.click_button_keyboard(Key.enter)
+                    time.sleep(5)
 
 controller = Controler()
 process = Process('action.json', controller)
