@@ -24,6 +24,10 @@ class Common:
         with open(self.name_file, 'r') as file:
             text = file.read()
         return text
+    def handle(self):
+        with open(self.name_file, 'r') as file:
+            file
+        return file
     def read_bytes(self):
         with open(self.name_file, 'r') as file:
             text = file.read().encode('utf8')
@@ -59,13 +63,17 @@ class FileEncrypt(Common):
         text = self.read()
         encrypt_text = fernet.encrypt(text.encode('utf8'))
         with open(self.name_file,'w') as file:
+
             text= file.write(encrypt_text.decode('utf8'))
         return encrypt_text # funkcja zwraca zakodowany i zszyfrowany text w bytach
 
 
 
 file=FileEncrypt('plik_do_pracy_domowej.txt', 'salt.txt')
+
+print('type file',type(file.handle()))
 file.read_salt()
+
 filedecrypt = FileDecrypt('plik_do_pracy_domowej.txt', 'salt.txt')
 
 file.encrypt_file()
