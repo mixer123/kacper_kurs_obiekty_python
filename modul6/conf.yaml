@@ -1,0 +1,8 @@
+mails:
+    - imap_server: "imap.google.com"
+      login: "ktos@gmail.com"
+      password: "password"
+    - imap_server: "imap.google.com"
+      login: "ktos1@gmail.com"
+      password: "password"
+
